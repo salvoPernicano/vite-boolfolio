@@ -1,9 +1,9 @@
 <script>
 import axios from 'axios';
-import AppCards from './AppCards.vue'
+import ProjectCard from './ProjectCard.vue'
 export default{
   components : {
-    AppCards,
+    ProjectCard,
   },
   name: 'MainApp',
   data(){
@@ -32,7 +32,7 @@ export default{
  <h1>Lista progetti</h1>
 
 <div class="container">
-  <AppCards v-for="(element,index) in projectsArray" 
+  <ProjectCard v-for="(element,index) in projectsArray" 
            :key="index"
            :propsObject="element"/>
   </div>
