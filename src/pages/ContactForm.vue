@@ -19,11 +19,21 @@ export default {
                 name : this.name,
                 email : this.email,
                 message : this.message,
+                success : false
             };
 
             this.errors = {};
 
-            axios.post(`${this.store.apiBaseUrl}/api/contacts`, data)
+            axios.post(`${this.store.apiBaseUrl}/api/contacts`, data).then( res => {
+                this.success = res.data.errors
+                if (!this.success){
+                    this.errors = res.data.success;
+                } else {
+                    this.name = ''
+                    this.email = ''
+                    this.message = ''
+                }
+            })
         }
     }
 }
